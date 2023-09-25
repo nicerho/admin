@@ -89,13 +89,15 @@ public class webpage {
 	    }
 	}
 	
-	@RequestMapping("footertest.do")
-	public String copyright(Model model, AdminConfigVO av,HttpServletResponse res) {
+	
+	
+	@RequestMapping("/shopping/footer.jsp")
+	public String footerInfo(Model model,AdminConfigVO av) {
 		SqlSession se = sqlSessionFactory.openSession();
 		av = se.selectOne("adminDB.selectAllConfig", av);
-		res.setContentType("text/html; charset=utf-8");
 		model.addAttribute("foot", av);
 		se.close();
-		return "/shopping/footer";
+		return "shopping/footer";
 	}
+
 }

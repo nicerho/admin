@@ -15,8 +15,8 @@
 		<ul class="info_form">
 			<li>포인트 사용 유/무</li>
 			<li class="checkcss">
-				<em><label><input type="radio" class="ckclass" name="apointuse" value="포인트 사용" required>포인트 사용</label></em>
-				<em><label><input type="radio" class="ckclass" name="apointuse" value="포인트 미사용" required>포인트 미사용</label></em>
+				<em><label><input type="radio" class="ckclass" name="apointuse" value="포인트 사용" id="pointUse" required>포인트 사용</label></em>
+				<em><label><input type="radio" class="ckclass" name="apointuse" value="포인트 미사용" checked required>포인트 미사용</label></em>
 			</li>
 		</ul>
 		<ul class="info_form2"
@@ -74,22 +74,22 @@
 	<ul class="info_form">
 		<li>신용카드 결제 사용</li>
 		<li class="checkcss"><em><label><input type="radio"
-					class="ckclass" name="acredit" value="사용"> 사용</label></em> <em><label><input
+					class="ckclass" name="acredit" id="acreditUse" value="사용"> 사용</label></em> <em><label><input
 					type="radio" class="ckclass" checked name="acredit" value="미사용"> 미사용</label></em> ※ 해당 PG사가 있을 경우
 			사용으로 변경합니다.</li>
 	</ul>
 	<ul class="info_form">
 		<li>휴대폰 결제 사용</li>
 		<li class="checkcss"><em><label><input type="radio"
-					class="ckclass" name="amobile" value="사용"> 사용</label></em> <em><label><input
+					class="ckclass" name="amobile" id="amobileUse" value="사용"> 사용</label></em> <em><label><input
 					type="radio" class="ckclass" checked name="amobile" value="미사용"> 미사용</label></em> ※ 주문시 휴대폰 결제를
 			가능하게 할 것인지를 설정합니다.</li>
 	</ul>
 	<ul class="info_form">
 		<li>도서상품권 결제사용</li>
 		<li class="checkcss"><em><label><input type="radio"
-					class="ckclass" name="abookcoupon" value="사용"> 사용</label></em> <em><label><input
-					type="radio" class="ckclass" name="abookcoupon" value="미사용"> 미사용</label></em> ※ 도서상품권 결제만 적용이
+					class="ckclass" name="abookcoupon" id="abookcouponUse" value="사용"> 사용</label></em> <em><label><input
+					type="radio" class="ckclass" name="abookcoupon" checked value="미사용"> 미사용</label></em> ※ 도서상품권 결제만 적용이
 			되며, 그 외에 상품권은 결제 되지 않습니다.</li>
 	</ul>
 	<ul class="info_form2">
@@ -103,8 +103,8 @@
 	<ul class="info_form">
 		<li>현금 영수증 발급사용</li>
 		<li class="checkcss"><em><label><input type="radio"
-					class="ckclass" name="ahbill" value="사용"> 사용</label></em> <em><label><input
-					type="radio" class="ckclass" checked name="ahbill" value="미사용"> 미사용</label></em> ※ 현금영수증 관련 사항은
+					class="ckclass" name="ahbill" id="ahbillUse" value="사용"> 사용</label></em> <em><label><input
+					type="radio" class="ckclass" checked  name="ahbill" value="미사용"> 미사용</label></em> ※ 현금영수증 관련 사항은
 			PG사 가입이 되었을 경우 사용가능 합니다.</li>
 	</ul>
 	<ul class="info_form2">
@@ -117,7 +117,7 @@
 	<ul class="info_form" style="border-bottom: 1px solid rgb(81, 61, 61);">
 		<li>희망배송일</li>
 		<li class="checkcss"><em><label><input type="radio"
-					class="ckclass" name="adeliverydate" value="사용"> 사용</label></em> <em><label><input
+					class="ckclass" name="adeliverydate" id="adeliverydateUse" value="사용"> 사용</label></em> <em><label><input
 					type="radio" class="ckclass" checked name="adeliverydate" value="미사용"> 미사용</label></em> ※ 희망배송일 사용시 사용자가
 			직접 설정 할 수 있습니다.</li>
 	</ul>
@@ -133,4 +133,26 @@
 		a.preventDefault();
 		f.submit();
 	});
+	
+	window.onload=function(){
+		if(${data.getApointuse()=="포인트 사용"}){
+			document.querySelector('#pointUse').checked=true;
+		}
+		if(${data.getAcredit()=="사용"}){
+			document.querySelector('#acreditUse').checked=true;
+		}
+		if(${data.getAmobile()=="사용"}){
+			document.querySelector('#amobileUse').checked=true;
+		}
+		if(${data.getAbookcoupon()=="사용"}){
+			document.querySelector('#abookcouponUse').checked=true;
+		}
+		if(${data.getAhbill()=="사용"}){
+			document.querySelector('#ahbillUse').checked=true;
+		}
+		if(${data.getAdeliverydate()=="사용"}){
+			document.querySelector('#adeliverydateUse').checked=true;
+		}
+		
+	}
 </script>

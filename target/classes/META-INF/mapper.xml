@@ -7,12 +7,12 @@
 	    values(#{asubject}, #{ademail}, #{apointuse}, #{abasicpoint}, #{alevel}, #{acompany}, #{acompanytel}, #{aboss}, #{abosstel}, #{anumber1}, #{anumber2}, #{apost}, #{aadress}, #{aname}, #{aemail}, #{abank}, #{abanknum}, #{acredit}, #{amobile}, COALESCE(#{abookcoupon},'사용'), #{alesspoint}, #{amaxpoint}, #{ahbill}, #{adelivery}, #{adeliverycharge}, #{adeliverydate});
 	</insert>
 	<delete id="deleteConfig">
-		delete from adminconfig where ano = #{ano}
+		delete from adminconfig
 	</delete>
 	<select id="selectAllConfigForCheck" resultType="int" parameterType="adminVo">
-		select count(*) from adminconfig where ano = #{ano}
+		select count(*) from adminconfig 
 	</select>
 	<select id="selectAllConfig" resultType="adminVo" parameterType="adminVo">
-		select * from adminconfig where ano = #{ano}
+		select * from adminconfig 
 	</select>
 </mapper>

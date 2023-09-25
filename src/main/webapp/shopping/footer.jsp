@@ -17,15 +17,15 @@
         <ul>
         <li><img src="./images/foot_logo.png"></li>
         <li>
-회사명 :  <div id="dd"></div>
-대표자 : 
-주소 :   <br>
-고객센터 : 
-상담시간 : 
-E-Mail : 
-사업자등록번호 :  <br>
-통신판매업신고번호 : 
-개인정보보호책임자 :    <br>
+회사명 :  ${foot.getAcompany()}
+대표자 : ${foot.getAboss()}
+주소 :  ${foot.getAadress()} <br>
+고객센터 : 010-1234-1234
+상담시간 : 아무때나
+E-Mail :  ${foot.getAemail()}
+사업자등록번호 :  ${foot.getAadress()} <br>
+통신판매업신고번호 :  ${foot.getAcompanytel()}
+개인정보보호책임자 :   ${foot.getAname()}  <br>
 Copyright © 도메인명 All Rights Reserved.
         </li>
         </ul>    
