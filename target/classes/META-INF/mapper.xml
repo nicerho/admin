@@ -15,4 +15,7 @@
 	<select id="selectAllConfig" resultType="adminVo" parameterType="adminVo">
 		select * from adminconfig 
 	</select>
+	<select id="siteInfo" parameterType="string" resultType="siteDto">
+	select * from adminconfig
+	</select>
 </mapper>

@@ -12,8 +12,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<!-- SQL 정보 파트 -->
 	<context:annotation-config />
+	<!-- destroy-method종료는 dbcp일 경우에는 가능..
+		dbcp2일 경우에는 오라클은 작동 x mysql 은 된디
+	 -->
 	<bean id="datasource"
-		class="org.apache.commons.dbcp.BasicDataSource">
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
@@ -37,4 +40,4 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 </beans>
-<!-- test -->
+<!-- test 22-->
