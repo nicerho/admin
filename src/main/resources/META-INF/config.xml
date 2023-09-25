@@ -5,5 +5,6 @@
 		<typeAlias type="admin.DataDto" alias="dataDto" />
 		<typeAlias type="admin.AdminConfigVO" alias="adminVo" />
 		<typeAlias type="app.SiteDto" alias="siteDto" />
+		<typeAlias type="app.PostDto" alias="postDto" />
 	</typeAliases>
 </configuration>

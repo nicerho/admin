@@ -18,4 +18,7 @@
 	<select id="siteInfo" parameterType="string" resultType="siteDto">
 	select * from adminconfig
 	</select>
+	<insert id="postInsert">
+	insert into hoPost values('0',#{pno1},#{pno2},#{pno3},#{pno4})
+	</insert>
 </mapper>

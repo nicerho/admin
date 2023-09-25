@@ -6,9 +6,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/admin")
+
 public class web {
 	/*
 	 * @Inject SqlSessionFactory sqlSessionFactory;
@@ -24,14 +25,23 @@ public class web {
 	@RequestMapping("/test.do")
 	public String test(Model model) {
 		sd = sm.select();
-		model.addAttribute("data",sd);
+		model.addAttribute("data", sd);
 		return "/app/test";
 	}
-	@Resource(name="address")
+
+	@Resource(name = "address")
 	private AddressModule am;
-	@RequestMapping("/addressok.do")
-	public int addressOk(Model model) {
-		am.addressInsert();
+	
+	@RequestMapping("/app/addressok.do")
+	public int addressOk(Model model, @RequestParam String pno1, @RequestParam String pno2, @RequestParam String pno3,
+			@RequestParam String pno4){
+		PostDto pd = new PostDto();
+		pd.setPno1(pno1);
+		pd.setPno2(pno2);
+		pd.setPno3(pno3);
+		pd.setPno4(pno4);
+		int x = am.addressInsert(pd);
+		System.out.println(x);
 		return 0;
 	}
 }
