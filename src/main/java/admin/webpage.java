@@ -1,5 +1,6 @@
 package admin;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.Principal;
 
@@ -32,17 +33,32 @@ public class webpage {
 	@Resource
 	private SqlSessionTemplate sqlsession;
 	HttpSession session = null;
-
+	static int x = 0;
 	@RequestMapping("/adminLogin.do")
 	public String adminLogin( HttpServletRequest req) {
-		
+		if(x==-1) {
+			return "/admin/index";
+		}
 		session = req.getSession();
 		session.setAttribute("perid", "최고관리자");
+		x = 1;
 		return "/admin/admin_main";
 	}
-
+	@RequestMapping("/logout.do")
+	public void logout(HttpServletResponse res) throws IOException {
+		session.invalidate();
+		 res.setContentType("text/html; charset=utf-8");
+		pw = res.getWriter();
+		pw.write("<script>alert('로그아웃성공');location.href='admin/index.jsp';</script>");
+		pw.close();
+		x = -1;
+	}
 	@GetMapping("/adminConfig.do")
 	public String adminConfig(@ModelAttribute("adminconfig") AdminConfigVO av, Model model, HttpServletRequest req) {
+		if(x==-1) {
+			return "/admin/index";
+		}
+		System.out.println(x);
 	    SqlSession se = sqlSessionFactory.openSession();
 	    try {
 	        av = se.selectOne("adminDB.selectAllConfig", av);
@@ -60,6 +76,7 @@ public class webpage {
 
 	@PostMapping("/adminconfigsave.do")
 	public void adminConfigSave(@ModelAttribute("adminconfig") AdminConfigVO av, HttpServletResponse res) throws Exception {
+		
 	    SqlSession se = sqlSessionFactory.openSession();
 	    res.setContentType("text/html; charset=utf-8");
 	    PrintWriter pw = res.getWriter();

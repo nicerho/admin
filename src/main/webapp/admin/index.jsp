@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-String user_id = "";
-try {
-	user_id = session.getAttribute("perid").toString();
-	out.print(user_id);
-} catch (Exception e) {
-}
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -70,9 +62,6 @@ try {
 					alert("계정 또는 비밀번호를 다시 확인하세요")
 				}
 			})
-		var mid = "<%=user_id%>"
-    	if(mid=="최고관리자"){
-    		location.href="http://localhost:8080/adminLogin.do"
-    	}
+
 </script>
 </html>
